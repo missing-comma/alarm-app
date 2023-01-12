@@ -8,10 +8,10 @@ import {
 	View as DefaultView,
 	ScrollView as DefaultScrollView,
 	FlatList as DefaultFlatList,
-} from 'react-native';
+} from "react-native";
 
-import Colors from '../constants/Colors';
-import useColorScheme from '../hooks/useColorScheme';
+import Colors from "../constants/Colors";
+import useColorScheme from "../hooks/useColorScheme";
 
 export function useThemeColor(
 	props: { light?: string; dark?: string },
@@ -31,17 +31,17 @@ type ThemeProps = {
 	darkColor?: string;
 };
 
-export type TextProps = ThemeProps & DefaultText['props'];
-export type ViewProps = ThemeProps & DefaultView['props'];
-export type ScrollViewProps = ThemeProps & DefaultScrollView['props'];
-export type FlatListProps = ThemeProps & DefaultFlatList['props'];
+export type TextProps = ThemeProps & DefaultText["props"];
+export type ViewProps = ThemeProps & DefaultView["props"];
+export type ScrollViewProps = ThemeProps & DefaultScrollView["props"];
+export type FlatListProps = ThemeProps & DefaultFlatList["props"];
 
 type ComponentLikeProps = TextProps | ViewProps | ScrollViewProps | FlatListProps;
 
 const makeThemedComponent = <P extends ComponentLikeProps>(Component: { new (props: P): any }) => {
 	return (props: P) => {
 		const { style, lightColor, darkColor, ...otherProps } = props;
-		const color = useThemeColor({ light: lightColor, dark: darkColor }, 'text');
+		const color = useThemeColor({ light: lightColor, dark: darkColor }, "text");
 
 		return <Component style={[{ color }, style]} {...otherProps} />;
 	};

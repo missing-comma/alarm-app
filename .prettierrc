@@ -1,11 +1,9 @@
 {
-	"singleQuote": true,
+	"singleQuote": false,
 	"printWidth": 100,
-	"editor.formatOnSave": true,
 	"proseWrap": "always",
 	"arrowParens": "avoid",
 	"tabWidth": 4,
-	"requireConfig": false,
 	"useTabs": true,
 	"trailingComma": "es5"
 }
