@@ -14,7 +14,10 @@ export const ScreenViewContainer = (props: ScrollViewProps) => {
 	}
 
 	return (
-		<ScrollView {...viewProps} style={[styles.container, viewProps.style]}>
+		<ScrollView
+			{...viewProps}
+			contentContainerStyle={[styles.container, viewProps.contentContainerStyle]}
+		>
 			{children}
 		</ScrollView>
 	);
@@ -24,7 +27,9 @@ const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		alignItems: "stretch",
+		textAlign: "center",
 		justifyContent: "flex-start",
 		marginTop: 35,
+		paddingHorizontal: 25,
 	},
 });

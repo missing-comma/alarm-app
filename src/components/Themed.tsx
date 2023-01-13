@@ -1,8 +1,3 @@
-/**
- * Learn more about Light and Dark modes:
- * https://docs.expo.io/guides/color-schemes/
- */
-
 import {
 	Text as DefaultText,
 	View as DefaultView,
@@ -10,21 +5,11 @@ import {
 	FlatList as DefaultFlatList,
 } from "react-native";
 
-import Colors from "../constants/Assets";
-import useColorScheme from "../hooks/useColorScheme";
+import { ColorTheme } from "../constants/Assets";
+import { useThemeColor as _useThemeColor } from "../hooks/use-theme-color";
 
-export function useThemeColor(
-	props: { light?: string; dark?: string },
-	colorName: keyof typeof Colors.light & keyof typeof Colors.dark
-) {
-	const theme = useColorScheme();
-	const colorFromProps = props[theme];
-
-	if (colorFromProps) {
-		return colorFromProps;
-	}
-	return Colors[theme][colorName];
-}
+/** @deprecated */
+export const useThemeColor = _useThemeColor;
 
 type ThemeProps = {
 	lightColor?: string;
@@ -38,16 +23,23 @@ export type FlatListProps = ThemeProps & DefaultFlatList["props"];
 
 type ComponentLikeProps = TextProps | ViewProps | ScrollViewProps | FlatListProps;
 
-const makeThemedComponent = <P extends ComponentLikeProps>(Component: { new (props: P): any }) => {
+const makeThemedComponent = <P extends ComponentLikeProps>(
+	Component: any,
+	colorName: ColorTheme.Name
+) => {
 	return (props: P) => {
 		const { style, lightColor, darkColor, ...otherProps } = props;
-		const color = useThemeColor({ light: lightColor, dark: darkColor }, "text");
+		const color = _useThemeColor({ light: lightColor, dark: darkColor }, colorName);
 
-		return <Component style={[{ color }, style]} {...otherProps} />;
+		const themeStyle = ["background"].includes(colorName)
+			? { backgroundColor: color }
+			: { color };
+
+		return <Component style={[themeStyle, style]} {...otherProps} />;
 	};
 };
 
-export const Text = makeThemedComponent<TextProps>(DefaultText);
-export const View = makeThemedComponent<ViewProps>(DefaultView);
-export const ScrollView = makeThemedComponent<ScrollViewProps>(DefaultScrollView);
-export const FlatList = makeThemedComponent<FlatListProps>(DefaultFlatList);
+export const Text = makeThemedComponent<TextProps>(DefaultText, "text");
+export const View = makeThemedComponent<ViewProps>(DefaultView, "background");
+export const ScrollView = makeThemedComponent<ScrollViewProps>(DefaultScrollView, "background");
+export const FlatList = makeThemedComponent<FlatListProps>(DefaultFlatList, "background");

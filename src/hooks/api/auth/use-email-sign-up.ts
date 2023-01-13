@@ -1,8 +1,8 @@
 import axios from "axios";
-import { getAuth, signInWithEmailAndPassword, setPersistence } from "firebase/auth";
 import { ENDPOINTS } from "../../../constants/Endpoints";
 import { User } from "../../../schemas/users";
 import { useAsyncCall } from "../../utils/use-async-call";
+import { handleEmailSignIn } from "./use-email-sign-in";
 
 export interface IEmailSignUpSchema {
 	readonly email: string;
@@ -16,10 +16,7 @@ export const useEmailSignUp = () => {
 
 			const user: User = response.data;
 
-			await setPersistence(getAuth(), {
-				type: "LOCAL",
-			});
-			await signInWithEmailAndPassword(getAuth(), payload.email, payload.password);
+			await handleEmailSignIn(payload);
 
 			return user;
 		},

@@ -1,23 +1,52 @@
-const tintColorLight = "#2f95dc";
-const tintColorDark = "#fff";
+const tintColorLight = "white";
+const tintColorDark = "#191720";
 
 export type ColorKey = string;
 
+export interface ColorTheme {
+	readonly text: string;
+	readonly background: string;
+	readonly tint: string;
+	readonly tabIconDefault: string;
+	readonly tabIconSelected: string;
+	readonly error: string;
+	readonly button: {
+		readonly fg: string;
+		readonly bg: string;
+	};
+}
+
+export declare namespace ColorTheme {
+	export type Name = keyof ColorTheme;
+}
+
+const makeTheme = (theme: ColorTheme) => theme;
+
 export default {
-	light: {
+	light: makeTheme({
 		text: "#000",
 		background: "#fff",
 		tint: tintColorLight,
 		tabIconDefault: "#ccc",
 		tabIconSelected: tintColorLight,
-	},
-	dark: {
+		button: {
+			fg: tintColorLight,
+			bg: tintColorDark,
+		},
+		error: "red",
+	}),
+	dark: makeTheme({
 		text: "#fff",
 		background: "#000",
-		tint: tintColorDark,
+		tint: "cyan",
 		tabIconDefault: "#ccc",
 		tabIconSelected: tintColorDark,
-	},
+		button: {
+			fg: tintColorDark,
+			bg: tintColorLight,
+		},
+		error: "red",
+	}),
 };
 
 export type FontFamily = "space-mono";
