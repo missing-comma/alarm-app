@@ -10,7 +10,7 @@ import {
 	FlatList as DefaultFlatList,
 } from "react-native";
 
-import Colors from "../constants/Colors";
+import Colors from "../constants/Assets";
 import useColorScheme from "../hooks/useColorScheme";
 
 export function useThemeColor(

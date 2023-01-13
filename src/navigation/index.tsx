@@ -10,7 +10,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import * as React from "react";
 import { ColorSchemeName, Pressable } from "react-native";
 
-import Colors from "../constants/Colors";
+import Colors from "../constants/Assets";
 import useColorScheme from "../hooks/useColorScheme";
 import AddReminderScreen from "../screens/add-reminder";
 import NotFoundScreen from "../screens/NotFoundScreen";

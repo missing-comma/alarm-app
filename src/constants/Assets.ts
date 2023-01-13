@@ -1,6 +1,8 @@
 const tintColorLight = "#2f95dc";
 const tintColorDark = "#fff";
 
+export type ColorKey = string;
+
 export default {
 	light: {
 		text: "#000",
@@ -17,3 +19,5 @@ export default {
 		tabIconSelected: tintColorDark,
 	},
 };
+
+export type FontFamily = "space-mono";
