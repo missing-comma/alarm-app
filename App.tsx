@@ -1,3 +1,5 @@
 import "./src/config";
 import App from "./src";
-export default App;
+import { withAuthContextProvider } from "./src/contexts/auth";
+
+export default withAuthContextProvider(App);
