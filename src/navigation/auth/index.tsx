@@ -5,10 +5,10 @@
  */
 import { FontAwesome } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { NavigationContainer, DefaultTheme, DarkTheme } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import * as React from "react";
 import { Pressable } from "react-native";
+import { NavigationHeaderButton } from "../../components/buttons/HeaderButton";
 
 import Colors from "../../constants/Assets";
 import useColorScheme from "../../hooks/useColorScheme";
@@ -16,7 +16,7 @@ import AddReminderScreen from "../../screens/add-reminder";
 import NotFoundScreen from "../../screens/NotFoundScreen";
 import TabOneScreen from "../../screens/TabOneScreen";
 import TabTwoScreen from "../../screens/TabTwoScreen";
-import { StackType, TabParamList, TabScreenProps, StackParamList } from "./schema";
+import { TabParamList, TabScreenProps, StackParamList } from "./schema";
 
 const Stack = createNativeStackNavigator<StackParamList>();
 
@@ -30,7 +30,27 @@ export default function AuthenticatedNavigator() {
 			/>
 			<Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: "Oops!" }} />
 			<Stack.Group screenOptions={{ presentation: "modal" }}>
-				<Stack.Screen name="AddReminder" component={AddReminderScreen} />
+				<Stack.Screen
+					name="AddReminder"
+					component={AddReminderScreen}
+					options={({ navigation }) => ({
+						title: "Add Reminder",
+						headerLeft: () => (
+							<NavigationHeaderButton
+								onPress={() => {
+									navigation.goBack();
+								}}
+							>
+								{"Cancel"}
+							</NavigationHeaderButton>
+						),
+					})}
+				/>
+				<Stack.Screen
+					name="EditReminder"
+					component={AddReminderScreen}
+					options={{ title: "Edit Reminder" }}
+				/>
 			</Stack.Group>
 		</Stack.Navigator>
 	);

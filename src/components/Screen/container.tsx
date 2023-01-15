@@ -25,11 +25,10 @@ export const ScreenViewContainer = (props: ScrollViewProps) => {
 
 const styles = StyleSheet.create({
 	container: {
-		flex: 1,
 		alignItems: "stretch",
 		textAlign: "center",
 		justifyContent: "flex-start",
-		marginTop: 35,
 		paddingHorizontal: 25,
+		paddingBottom: 15,
 	},
 });

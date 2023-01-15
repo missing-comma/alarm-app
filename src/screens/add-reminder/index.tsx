@@ -1,15 +1,33 @@
 import { StatusBar } from "expo-status-bar";
 import { Platform, StyleSheet } from "react-native";
 
-import EditScreenInfo from "../../components/EditScreenInfo";
 import { ModalScreen } from "../../components/Modal-Screen";
-import { ScreenView } from "../../components/Screen";
-import { Text, View } from "../../components/Themed";
+import { useCreateReminder } from "../../hooks/api/reminders/use-create-reminder";
+import { Reminder } from "../../schemas/reminders";
+import { ReminderValuesScreen } from "../reminder/components/reminder-screen";
 
 export default function AddReminderScreen() {
+	const createReminder = useCreateReminder();
+
 	return (
-		<ModalScreen>
-			<EditScreenInfo path="/screens/ModalScreen.tsx" />
+		<ModalScreen scrollEnabled={false}>
+			<ReminderValuesScreen
+				loading={false}
+				initialValues={undefined}
+				onSubmit={({ startNull, endNull, utc, ...values }) => {
+					console.log("submitting");
+					const metadata: Reminder.Metadata = {
+						endNull,
+						startNull,
+						utc,
+					};
+					createReminder({
+						...values,
+						metadata,
+						exceptions: [],
+					});
+				}}
+			/>
 			<StatusBar style={Platform.OS === "ios" ? "light" : "auto"} />
 		</ModalScreen>
 	);

@@ -17,6 +17,7 @@ export const ModalScreen = (props: ModalScreenProps) => {
 
 const styles = StyleSheet.create({
 	container: {
+		flex: 1,
 		marginTop: 35,
 	},
 });

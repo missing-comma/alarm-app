@@ -1,4 +1,5 @@
 import { StatusBar } from "expo-status-bar";
+import { KeyboardAvoidingView, Platform } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
 import useCachedResources from "./hooks/use-cached-resources";
@@ -14,8 +15,14 @@ export default function App() {
 	}
 	return (
 		<SafeAreaProvider>
-			<Navigation colorScheme={colorScheme} />
-			<StatusBar />
+			<KeyboardAvoidingView
+				behavior={Platform.OS === "ios" ? "padding" : undefined}
+				style={{ flex: 1 }}
+				contentContainerStyle={{ flexGrow: 1 }}
+			>
+				<Navigation colorScheme={colorScheme} />
+				<StatusBar />
+			</KeyboardAvoidingView>
 		</SafeAreaProvider>
 	);
 }

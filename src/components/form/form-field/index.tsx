@@ -11,7 +11,7 @@ export interface IFormFieldProps {
 }
 
 export type FormContentProps<Props extends {}> = Omit<
-	IFormFieldProps & Props,
+	IFormFieldProps & Props & { label?: string },
 	"children" | "error"
 >;
 

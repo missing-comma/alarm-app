@@ -3,9 +3,8 @@ import { StyleSheet } from "react-native";
 import EditScreenInfo from "../components/EditScreenInfo";
 import { ScreenView } from "../components/Screen";
 import { View } from "../components/Themed";
-import { RootTabScreenProps } from "../types";
 
-export default function TabOneScreen({ navigation }: RootTabScreenProps<"TabOne">) {
+export default function TabOneScreen({ navigation }: any) {
 	return (
 		<ScreenView>
 			<View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
