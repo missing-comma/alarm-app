@@ -1,1 +1,1 @@
-export type Foo<Args extends any[], R> = (...args: Args) => R;
+export type Foo<Args extends any[] = any, R = any> = (...args: Args) => R;
