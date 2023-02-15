@@ -1,0 +1,26 @@
+{
+	"name": "jester",
+	"version": "0.0.0",
+	"main": "./index.ts",
+	"types": "./index.ts",
+	"license": "MIT",
+	"files": [
+		"eslint-preset.js"
+	],
+	"scripts": {
+		"lint": "eslint *.ts*",
+		"test": "jest --runInBand"
+	},
+	"dependencies": {
+		"jest": "27",
+		"jest-transform-stub": "^2.0.0",
+		"ts-jest": "^27.1.4",
+		"ts-node": "^10.7.0"
+	},
+	"devDependencies": {
+		"eslint-config-custom": "*",
+		"typings": "*",
+		"tsconfig": "*",
+		"jest-config": "*"
+	}
+}

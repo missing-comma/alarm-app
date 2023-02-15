@@ -105,3 +105,9 @@ dist
 .tern-port
 
 .expo
+
+.turbo
+
+.jest-cache
+
+!packages/base/typings
