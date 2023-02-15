@@ -3,7 +3,7 @@ import { Platform, StyleSheet } from "react-native";
 
 import { ModalScreen } from "../../components/Modal-Screen";
 import { useCreateReminder } from "../../hooks/api/reminders/use-create-reminder";
-import { Reminder } from "../../schemas/reminders";
+import { Reminder } from "alarm-core";
 import { ReminderValuesScreen } from "../reminder/components/reminder-screen";
 
 export default function AddReminderScreen() {

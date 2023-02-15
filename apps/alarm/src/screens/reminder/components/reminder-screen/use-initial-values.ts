@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import { getTimeOffsetSinceStartOfDay } from "../../../../helpers/time-offset";
 import { Merge } from "../../../../helpers/types/merge";
 import { Pick } from "../../../../helpers/types/pick";
-import { Reminder } from "../../../../schemas/reminders";
+import { Reminder } from "alarm-core";
 import { FormValues, ReminderValuesScreenProps } from "./types";
 
 type DefaultValuesAsIs = Merge.Right<

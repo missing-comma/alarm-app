@@ -1,4 +1,4 @@
-import { Reminder } from "../../../../schemas/reminders";
+import { Reminder } from "alarm-core";
 
 export interface ReminderValuesScreenProps {
 	initialValues?: Reminder;

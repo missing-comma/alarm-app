@@ -1,6 +1,6 @@
 import axios from "axios";
 import { ENDPOINTS } from "../../../constants/Endpoints";
-import { User } from "../../../schemas/users";
+import { User } from "alarm-core";
 import { useAsyncCall } from "../../utils/use-async-call";
 import { handleEmailSignIn } from "./use-email-sign-in";
 

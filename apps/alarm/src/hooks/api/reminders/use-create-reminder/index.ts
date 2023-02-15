@@ -1,5 +1,5 @@
 import { collection, getFirestore, doc, setDoc } from "firebase/firestore";
-import { Reminder } from "../../../../schemas/reminders";
+import { Reminder } from "alarm-core";
 import { useAsyncCall } from "../../../utils/use-async-call";
 
 type QueryableDate = {
